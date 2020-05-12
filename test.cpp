@@ -1,4 +1,10 @@
-using namespace cv2;
+#include <opencv2/core.hpp>
+#include <opencv2/video.io.hpp>
+#include <opencv2/highgui.hpp>
+#include <iostream>
+#include <stdio.h>
+
+using namespace cv;
 using namespace std;
 
 
