@@ -1,0 +1,3 @@
+/home/pi/opencv/dev/blind_guide/build/CMakeFiles/rebuild_cache.dir
+/home/pi/opencv/dev/blind_guide/build/CMakeFiles/videocapture_basic.dir
+/home/pi/opencv/dev/blind_guide/build/CMakeFiles/edit_cache.dir
