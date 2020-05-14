@@ -171,22 +171,24 @@ using namespace std;
 int main(int argc, char* argv[])
 {
    clock_t start, end;
-   double result;
+   double result = 0;
+
    //VideoCapture capture(-1);
    //VideoCapture capture(1);
    VideoCapture capture("./src/test_04.mp4");
    //VideoCapture capture("s.mp4");
    //VideoCapture capture = VideoCapture("http://172.30.1.13:8090/?action=stream");
 
-   if (!capture.isOpened())
-   {
-      cerr << "Could not open camera" << endl;
-      return 0;
-   }
-
    //namedWindow("testcam", );
    start = clock();
    while (true) {
+
+      if (!capture.isOpened())
+      {
+         cerr << "Could not open camera" << endl;
+         return 0;
+      }
+      
       bool frame_valid = true;
       Mat frame;
 
@@ -281,13 +283,14 @@ int main(int argc, char* argv[])
             //imshow("test", ratangle_img);
             //imshow("morphcam", contours_img);
             end= clock();
+            result = (double)(end - start);
          }
          
          catch (Exception& e) {
             //cerr << "Exception occurred. Ignoring frame..." << e.err
              //  << endl;
-            result = (double)(end - start);
             printf("시간 : %f초", result);
+            break;
          }
       }
       
