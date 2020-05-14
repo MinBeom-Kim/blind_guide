@@ -169,9 +169,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-   //VideoCapture capture(0);
+   VideoCapture capture(-1);
    //VideoCapture capture(1);
-   VideoCapture capture("./src/test_200508.mp4");
+   //VideoCapture capture("./src/test_04.mp4");
    //VideoCapture capture("s.mp4");
    //VideoCapture capture = VideoCapture("http://172.30.1.13:8090/?action=stream");
 
