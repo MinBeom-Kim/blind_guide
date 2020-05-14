@@ -11,6 +11,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <cmath>
+#include <time.h>
 
 #if CV_MAJOR_VERSION > 3
 
@@ -169,9 +170,11 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-   VideoCapture capture(-1);
+   clock_t start, end;
+   double result;
+   //VideoCapture capture(-1);
    //VideoCapture capture(1);
-   //VideoCapture capture("./src/test_04.mp4");
+   VideoCapture capture("./src/test_04.mp4");
    //VideoCapture capture("s.mp4");
    //VideoCapture capture = VideoCapture("http://172.30.1.13:8090/?action=stream");
 
@@ -182,7 +185,7 @@ int main(int argc, char* argv[])
    }
 
    //namedWindow("testcam", );
-
+   start = clock();
    while (true) {
       bool frame_valid = true;
       Mat frame;
@@ -277,15 +280,20 @@ int main(int argc, char* argv[])
             imshow("contours", morph);
             //imshow("test", ratangle_img);
             //imshow("morphcam", contours_img);
+            end= clock();
          }
-
+         
          catch (Exception& e) {
-            cerr << "Exception occurred. Ignoring frame..." << e.err
-               << endl;
+            //cerr << "Exception occurred. Ignoring frame..." << e.err
+             //  << endl;
+            result = (double)(end - start);
+            printf("시간 : %f초", result);
          }
       }
+      
       if (waitKey(30) >= 0) break;
    } // VideoCapture automatically deallocate camera object 
+   
    return 0;
    
 }
