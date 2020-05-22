@@ -1,15 +1,16 @@
+import numpy as np
 import cv2
 
-img_color = cv2.imread('test.jpg', cv2.IMREAD_COLOR)
+cap = cv2.VideoCapture('./src/test_04.mp4')
 
-cv2.namedWindow('Show Image')
-cv2.imshow('Show Image', img_color)
-cv2.waitKey(0)
+while(cap.isOpened()):
+    ret, frame = cap.read()
 
-img_gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-cv2.imshow('Show Image', img_gray)
-cv2.waitKey(0)
-cv2.imwrite('savedimage.jpg', img_gray)
+    cv2.imshow('frame',gray)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
+cap.release()
 cv2.destroyAllWindows()
