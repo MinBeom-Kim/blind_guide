@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import time
 
 cap = cv2.VideoCapture('./src/test_04.mp4')
 
@@ -22,6 +23,8 @@ while(cap.isOpened()):
     frame_blur = cv2.GaussianBlur(frame, (5,5), 0)
     ret, frame_result3 = cv2.threshold(frame_blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
+
+    time.sleep(0.035)
 
     cv2.imshow("SOURCE", cap_frame)
     cv2.imshow("THRESH_BINARY", frame_result1)
