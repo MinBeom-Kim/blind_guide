@@ -7,13 +7,13 @@ while(cap.isOpened()):
     
     kernel = np.ones((16, 16), np.uint8)
 
-    ret, frame = cap.read()
+    ret, cap = cap.read()
 
-    #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    #cv2.GaussianBlur(cap, (7, 7), 1.5)
-    #cap = cv2.Canny(cap, 50, 100)
-    #cv2.getStructuringElement(cv2.MORPH_ELLIPSE, kernel)
-    #cv2.morphologyEx(cap, cv2.MORPH_CLOSE, kernel)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    cv2.GaussianBlur(cap, (7, 7), 1.5)
+    cap = cv2.Canny(cap, 50, 100)
+    cv2.getStructuringElement(cv2.MORPH_ELLIPSE, kernel)
+    cv2.morphologyEx(cap, cv2.MORPH_CLOSE, kernel)
 
     ret,cap_result1 = cv2.threshold(cap, 127, 255, cv2.THRESH_BINARY)
 
