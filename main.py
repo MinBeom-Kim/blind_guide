@@ -11,9 +11,9 @@ while(cap.isOpened()):
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     cv2.GaussianBlur(frame, (7, 7), 1.5)
-    cap = cv2.Canny(frame, 50, 100)
-    cv2.getStructuringElement(cv2.MORPH_ELLIPSE, kernel)
-    cv2.morphologyEx(frame, cv2.MORPH_CLOSE, kernel)
+    frame = cv2.Canny(frame, 50, 100)
+    cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (16, 16))
+    cv2.morphologyEx(frame, cv2.MORPH_CLOSE, (16, 16))
 
     ret,frame_result1 = cv2.threshold(frame, 127, 255, cv2.THRESH_BINARY)
 
