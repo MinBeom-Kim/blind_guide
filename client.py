@@ -1,5 +1,5 @@
 # import the necessary packages
-from imutils.video import VideoStream
+import VideoStream
 import imagezmq
 import argparse
 import socket
