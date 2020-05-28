@@ -1,5 +1,5 @@
 # import the necessary packages
-from imutils
+import imutils
 import imagezmq
 import argparse
 import socket
