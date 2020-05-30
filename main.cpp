@@ -170,7 +170,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-   VideoCapture cap(-1);
+   VideoCapture cap(0);
 
    cv::VideoWriter writer;
 
