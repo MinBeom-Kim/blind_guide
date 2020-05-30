@@ -24,3 +24,4 @@ while True:
 	# read the frame from the camera and send it to the server
 	frame = vs.read()
 	sender.send_image(rpiName, frame)
+	camera.close()
