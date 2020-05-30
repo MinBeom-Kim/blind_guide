@@ -174,7 +174,7 @@ int main(int argc, char* argv[])
 
    cv::VideoWriter writer;
 
-   writer.open("appsrc !  video/x-raw,  width=640, height=480 ! videoconvert ! x264enc tune=zerolatency ! rtph264pay ! gdppay ! tcpserversink host=192.168.0.18 port=5000", 0, (double)30, cv::Size(640, 480), false);
+   writer.open("appsrc !  video/x-raw,  width=640, height=480 ! videoconvert ! h264parse ! rtph264pay ! gdppay ! tcpserversink host=192.168.0.18 port=5000", 0, (double)30, cv::Size(640, 480), false);
 
    cv::Mat frame, grayImage, edgeImage;
 
