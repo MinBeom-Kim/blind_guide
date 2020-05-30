@@ -2,7 +2,8 @@ import numpy as np
 import cv2
 import time
 
-cap = cv2.VideoCapture('./src/test_04.mp4')
+# cap = cv2.VideoCapture('./src/test_04.mp4')
+cap = cv2.VideoCapture('gst-launch-1.0 -v tcpclientsrc host=113.198.244.147 port=5000 ! gdpdepay ! rtph264depay ! avdec_h264 ! videoconvert ! autovideosink sync=false') 
 
 while(cap.isOpened()):
     
