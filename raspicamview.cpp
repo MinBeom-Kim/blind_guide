@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    VideoCapture cap( -1 );
+    VideoCapture cap(-1);
   
     if( !cap.isOpened() ) {
         cout << "Cannot open camera" << endl;
@@ -24,10 +24,10 @@ int main()
 
 	cv::VideoWriter writer;
     // problem here
-	//writer.open("appsrc ! video/x-raw, framerate=30/1, width=640, height=480 ! autovideoconvert ! autovideosink sync=false", 0, (double)30, cv::Size(640, 480), true);
+	writer.open("appsrc ! video/x-raw, framerate=30/1, width=640, height=480 ! autovideoconvert ! autovideosink sync=false", 0, (double)30, cv::Size(640, 480), true);
     //writer.open("appsrc ! video/x-raw, framerate=30/1, width=640, height=480 ! autovideoconvert ! videoflip method=counterclockwise ! autovideosink sync=false", 0, (double)30, cv::Size(640, 480), true);
 	//writer.open("appsrc ! videoconvert ! x264enc tune=zerolatency ! rtph264pay ! udpsink host=192.168.0.89 port=5000", 0, (double)30, cv::Size(640, 480), false);
-	writer.open("appsrc ! videoconvert ! x264enc tune=zerolatency ! mpegtsmux ! udpsink host=192.168.0.5 port=5000", 0, (double)30, cv::Size(640, 480), false);
+	//writer.open("appsrc ! videoconvert ! x264enc tune=zerolatency ! mpegtsmux ! udpsink host=192.168.0.5 port=5000", 0, (double)30, cv::Size(640, 480), false);
 	//writer.open("appsrc !  video/x-raw,  width=640, height=480 ! videoconvert ! x264enc tune=zerolatency ! rtph264pay ! gdppay ! tcpserversink host=192.168.168.101 port=5000", 0, (double)30, cv::Size(640, 480), false);
     if (!writer.isOpened()) {
         printf("=ERR= can't create writer\n");
