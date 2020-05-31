@@ -4,7 +4,7 @@ from multiprocessing import Process
 
 def send():
     cap_send = cv2.VideoCapture('videotestsrc ! video/x-raw,framerate=20/1 ! videoscale ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
-    out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency bitrate=500 speed-preset=superfast ! rtph264pay ! udpsink host=127.0.0.1 port=5000',cv2.CAP_GSTREAMER,0, 20, (320,240), True)
+    out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency bitrate=500 speed-preset=superfast ! rtph264pay ! udpsink host=113.198.244.122 port=5000',cv2.CAP_GSTREAMER,0, 20, (320,240), True)
 
     if not cap_send.isOpened() or not out_send.isOpened():
         print('VideoCapture or VideoWriter not opened')
@@ -27,7 +27,7 @@ def send():
     out_send.release()
 
 def receive():
-    cap_receive = cv2.VideoCapture('udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
+    cap_receive = cv2.VideoCapture('udpsrc port=5000 caps = "113.198.244.122, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
 
     if not cap_receive.isOpened():
         print('VideoCapture not opened')
