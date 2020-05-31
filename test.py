@@ -2,56 +2,28 @@ import numpy as np
 import cv2
 from multiprocessing import Process
 
-def send():
-    cap_send = cv2.VideoCapture('videotestsrc ! video/x-raw,framerate=20/1 ! videoscale ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
-    out_send = cv2.VideoWriter('appsrc ! videoconvert ! x264enc tune=zerolatency bitrate=500 speed-preset=superfast ! rtph264pay ! udpsink host=192.168.0.5 port=5000',cv2.CAP_GSTREAMER,0, 20, (320,240), True)
+cap = cv2.VideoCapture(-1)
 
-    if not cap_send.isOpened() or not out_send.isOpened():
-        print('VideoCapture or VideoWriter not opened')
-        exit(0)
+# Define the codec and create VideoWriter object
+out = cv2.VideoWriter('appsrc ! queue ! videoconvert ! video/x-raw ! omxh264enc ! video/x-h264 ! h264parse ! rtph264pay ! udpsink host=192.168.0.5 port=5000 sync=false',0,25.0,(640,480))
 
-    while True:
-        ret,frame = cap_send.read()
 
-        if not ret:
-            print('empty frame')
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        frame = cv2.flip(frame, 0)
+        frame = cv2.Canny(cap_frame, 50, 100)
+
+        cv2.imshow("canny", frame)
+        # write the flipped frame
+        out.write(frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+    else:
+        break
 
-        out_send.write(frame)
-
-        cv2.imshow('send', frame)
-        if cv2.waitKey(1)&0xFF == ord('q'):
-            break
-
-    cap_send.release()
-    out_send.release()
-
-def receive():
-    cap_receive = cv2.VideoCapture('udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
-
-    if not cap_receive.isOpened():
-        print('VideoCapture not opened')
-        exit(0)
-
-    while True:
-        ret,frame = cap_receive.read()
-
-        if not ret:
-            print('empty frame')
-            break
-
-        cv2.imshow('receive', frame)
-        if cv2.waitKey(1)&0xFF == ord('q'):
-            break
-
-    cap_receive.release()
-
-if __name__ == '__main__':
-    s = Process(target=send)
-    r = Process(target=receive)
-    s.start()
-    r.start()
-    s.join()
-    r.join()
-
-    cv2.destroyAllWindows()
+# Release everything if job is finished
+cap.release()
+out.release()
+cv2.destroyAllWindows()
