@@ -18,6 +18,7 @@ cap.set(cv2.CAP_PROP_FPS, fps)
 # Define the gstreamer sink
 gst_str = "appsrc ! videoconvert ! shmsink socket-path=/tmp/foo sync=true wait-for-connection=false shm-size=10000000"
 
+
 # Check if cap is open
 if cap.isOpened() is not True:
     print("Cannot open camera. Exiting.")
