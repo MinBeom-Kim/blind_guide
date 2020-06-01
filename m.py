@@ -39,7 +39,7 @@ while True:
         # Write to SHM
         out.write(frame)
     else:
-        print "Camera error."
+        print("Camera error.")
         time.sleep(10)
 
 cap.release()
