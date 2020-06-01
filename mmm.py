@@ -17,7 +17,7 @@ if not cap.isOpened():
 
 
 gst_str_rtp = "appsrc ! videoconvert ! x264enc noise-reduction=10000 tune=zerolatency byte-stream=true threads=4 " \
-              " ! h264parse ! mpegtsmux ! rtpmp2tpay ! udpsink host=127.0.0.1 port=5000"
+              " ! h264parse ! mpegtsmux ! rtpmp2tpay ! udpsink host=192.168.0.6 port=5000"
 
 # Create videowriter as a RTP sink
 out = cv2.VideoWriter(gst_str_rtp, 0, fps, (frame_width, frame_height), True)
