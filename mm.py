@@ -1,5 +1,7 @@
 import cv2
-
+import gi
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst
 # WORKING: cap = cv2.VideoCapture("shmsrc socket-path=/tmp/foo ! video/x-raw, format=BGR ,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw, format=BGR ! appsink")
 
 # Define the source as shared memory (shmsrc) and point to the socket. !

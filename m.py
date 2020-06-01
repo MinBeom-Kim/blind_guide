@@ -2,6 +2,9 @@ import time
 import numpy as np
 import cv2
 from multiprocessing import Process
+import gi
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst
 
 # Cam properties
 fps = 30.
