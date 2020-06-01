@@ -6,8 +6,7 @@ import time
 #cap = cv2.VideoCapture('rtsp://113.198.244.122:8554/test')
 # cap = cv2.VideoCapture('./src/test_04.mp4')
 # cap = cv2.VideoCapture('udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
-cap = cv2.VideoCapture("shmsrc socket-path=/tmp/foo ! video/x-raw, format=BGR, width=640, height=480, pixel-aspect-ratio=1/1, framerate=30/1 ! \
-     decodebin ! videoconvert ! appsink")
+cap = cv2.VideoCapture("tcpserversink host=192.168.0.6 port=5000 sync=false ! h264parse, rtph264pay config-interval=1 pt=96, width=640, height=480, pixel-aspect-ratio=1/1, framerate=30/1 ! decodebin ! videoconvert ! appsink")
 
 
 while(cap.isOpened()):
