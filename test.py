@@ -12,7 +12,7 @@ while cap.isOpened():
     ret, frame = cap.read()
     if ret:
         frame = cv2.flip(frame, 0)
-        frame = cv2.Canny(cap_frame, 50, 100)
+        frame = cv2.Canny(frame, 50, 100)
 
         cv2.imshow("canny", frame)
         # write the flipped frame
