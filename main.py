@@ -1,6 +1,8 @@
 import numpy as np
 import cv2
 import time
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst
 
 # cap = cv2.VideoCapture('http://113.198.244.122:8090/?action=stream')
 #cap = cv2.VideoCapture('rtsp://113.198.244.122:8554/test')
