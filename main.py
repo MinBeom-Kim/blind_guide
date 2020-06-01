@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-cap = cv2.VideoCapture('rtsp://211.220.184.24:8554/test')
+cap = cv2.VideoCapture('http://113.198.244.122:8090/?action=stream')
 # cap = cv2.VideoCapture('./src/test_04.mp4')
 # cap = cv2.VideoCapture('udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
 
