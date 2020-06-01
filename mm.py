@@ -8,8 +8,7 @@ import cv2
 cap = cv2.VideoCapture("shmsrc socket-path=/tmp/foo ! video/x-raw, format=BGR ,width=1920,height=1080,framerate=30/1 ! appsink")
 
 ## Update
-#cap = cv2.VideoCapture("shmsrc socket-path=/tmp/foo ! video/x-raw, format=BGR, width=640, height=480, pixel-aspect-ratio=1/1, framerate=30/1 ! \
-     decodebin ! videoconvert ! appsink")
+# cap = cv2.VideoCapture("shmsrc socket-path=/tmp/foo ! video/x-raw, format=BGR, width=640, height=480, pixel-aspect-ratio=1/1, framerate=30/1 ! \ decodebin ! videoconvert ! appsink")
 
 if not cap.isOpened():
     print("Cannot capture from camera. Exiting.")
