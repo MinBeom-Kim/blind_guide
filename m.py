@@ -1,5 +1,7 @@
 import time
+import numpy as np
 import cv2
+from multiprocessing import Process
 
 # Cam properties
 fps = 30.
@@ -31,15 +33,20 @@ while True:
     # Check
     if ret is True:
         # Flip frame
-        frame = cv2.flip(frame, 1)
-        # frame = cv2.flip(frame, 0)
+        # frame = cv2.flip(frame, 1)
+        frame = cv2.flip(frame, 0)
         frame = cv2.Canny(frame, 50, 100)
 
         cv2.imshow("canny", frame)
         # Write to SHM
         out.write(frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
     else:
         print("Camera error.")
         time.sleep(10)
 
 cap.release()
+out.release()
+cv2.destroyAllWindows()
