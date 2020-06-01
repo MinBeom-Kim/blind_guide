@@ -6,7 +6,7 @@ fps = 30.
 frame_width = 1920
 frame_height = 1080
 # Create capture
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(-1)
 
 # Set camera properties
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
