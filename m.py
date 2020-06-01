@@ -18,7 +18,7 @@ gst_str = "appsrc ! videoconvert ! shmsink socket-path=/tmp/foo sync=true wait-f
 
 # Check if cap is open
 if cap.isOpened() is not True:
-    print "Cannot open camera. Exiting."
+    print("Cannot open camera. Exiting.")
     quit()
 
 # Create videowriter as a SHM sink
